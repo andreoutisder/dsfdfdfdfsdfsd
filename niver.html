@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title> FELIZ ANIVERSÁRIO 💕</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Pacifico&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ffd6e0, #ffeaf4, #fff0f5);
+    font-family: 'Quicksand', sans-serif;
+    color: #5a2a3b;
+    overflow-x: hidden;
+}
+
+/* brilho animado */
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.4) 2px, transparent 2px);
+    background-size: 40px 40px;
+    animation: brilho 25s linear infinite;
+    z-index: 0;
+}
+
+@keyframes brilho {
+    from { transform: translateY(0); }
+    to { transform: translateY(-200px); }
+}
+
+/* flores de maio */
+#floresMaio {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.flor-maio {
+    position: absolute;
+    font-size: 22px;
+    animation: cairFlor linear infinite;
+    opacity: 0.9;
+    filter: drop-shadow(0 0 6px rgba(255,255,255,0.4));
+}
+
+@keyframes cairFlor {
+    0% {
+        transform: translateY(-120px) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(120vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.page {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    padding-top: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+
+    box-sizing: border-box;
+
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 1s ease, transform 1s ease;
+    position: relative;
+    z-index: 1;
+}
+
+#container {
+    text-align: center;
+    padding: 20px;
+    max-width: 700px;
+    width: 100%;
+    background: rgba(255,255,255,0.35);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    height: auto;
+    transition: all 0.5s ease;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(255, 105, 180, 0.2);
+}
+
+/* títulos */
+h1, h2 {
+    font-family: 'Pacifico', cursive;
+    color: #ff4d88;
+}
+
+p {
+    font-size: 16px;
+}
+
+/* Bonus */
+.Bonus {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(45deg, #ff7aa2, #ffb3c6);
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+    transition: 0.3s;
+}
+
+.Bonus:hover {
+    transform: scale(1.08);
+}
+
+/* intro */
+#intro {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ffd6e0, #fff0f6);
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    padding-top: 40px;
+    box-sizing: border-box;
+
+    z-index: 9999;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.intro-content {
+    text-align: center;
+    animation: pulse 2s infinite;
+}
+
+.intro-content h1 {
+    font-size: 60px;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.8; }
+}
+
+/* texto */
+#texto {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    line-height: 1.6;
+    font-size: 18px;
+}
+
+/* botão estilo */
+.btn {
+    margin-top: 20px;
+    padding: 14px 18px;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    background: linear-gradient(45deg, #ff7aa2, #ffb3c6);
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+    transition: 0.3s;
+    position: relative;
+}
+
+.btn:hover {
+    transform: scale(1.08);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50px;
+    background: linear-gradient(45deg, #ff7aa2, #ffb3c6);
+    z-index: -1;
+    filter: blur(15px);
+    opacity: 0.5;
+}
+
+/* estrelas */
+.star {
+    position:absolute;
+    width:6px;
+    height:6px;
+    background:white;
+    border-radius:50%;
+    opacity:0.8;
+    animation: piscar 1.5s infinite alternate;
+}
+
+@keyframes piscar {
+    from { opacity: 0.3; }
+    to { opacity: 1; }
+}
+
+/* final */
+#final {
+    display:none;
+    margin-top:30px;
+    opacity:0;
+    transition:1s;
+}
+
+.final-container {
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.lado-texto {
+    flex:1;
+    min-width:250px;
+    text-align:left;
+}
+
+.extra {
+    display: none;
+    opacity: 0;
+    transition: opacity 2s;
+    margin-top: 20px;
+}
+
+.lado-coracao {
+    flex:1;
+    text-align:center;
+}
+
+/* coração */
+.heart-img {
+    width:130px;
+    animation: pulse 2s infinite;
+}
+
+/* partículas */
+.particle {
+    position:absolute;
+    animation: subir 4s linear infinite;
+}
+
+@keyframes subir {
+    from { transform: translateY(0); opacity:1; }
+    to { transform: translateY(-300px); opacity:0; }
+}
+
+/* jogo */
+#gameWrapper {
+    text-align:center;
+}
+
+#gameArea {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    margin:20px auto;
+}
+
+#target {
+    position:absolute;
+    width:40px;
+    height:40px;
+    background: linear-gradient(45deg, #ff7aa2, #ffb3c6);
+    border-radius:50%;
+    cursor:pointer;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+}
+
+/* extras */
+#stars {
+    pointer-events: none;
+}
+
+#container > *:not(#stars) {
+    position: relative;
+    z-index: 1;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- flores -->
+<div id="floresMaio"></div>
+
+<div id="intro">
+    <div class="intro-content">
+        <h1>💖</h1>
+        <p>Clique para começar</p>
+    </div>
+</div>
+
+<div class="page">
+<div id="container">
+
+
+<div id="gameWrapper">
+    <h2>Você quer mesmo ver? 🙀</h2>
+    <p>Clique nas bolotas 💕</p>
+
+    <div id="gameArea">
+        <div id="target"></div>
+    </div>
+
+    <div id="confirm1" style="display:none;">
+        <h2>Tem certeza?</h2>
+        <button class="btn" onclick="nextConfirm()">SIM</button>
+        <button id="no1" class="btn">NÃO</button>
+    </div>
+
+    <div id="confirm2" style="display:none;">
+        <h2>Última chance 😈</h2>
+        <button class="btn" onclick="startStory()">SIM</button>
+        <button id="no2" class="btn">NÃO</button>
+    </div>
+</div>
+
+<div id="conteudo" style="display:none;">
+
+<div id="stars"></div>
+
+<h1>🩷JUJUBA🩷</h1>
+<h2 id="subtitulo">✨CONTINUE BRILHANDO✨</h2>
+
+<p id="texto"></p>
+
+<button id="btnContinuar" class="btn" onclick="proximoTexto()">Continuar 💌</button>
+
+<div id="final">
+    <div class="final-container">
+
+        <div class="lado-texto">
+            <p>
+                
+                Que esse seja só mais um
+                de muitos anos incríveis na sua vida...<br><br>
+                
+                Porque você merece tudo de melhor
+                que esse mundo pode oferecer 💕<br><br>
+                
+                E eu espero, de verdade,
+                poder continuar fazendo parte
+                da sua história 💖<br><br>
+
+                Fiz uma playlist pra você 💕<br><br>
+
+                <a class="Bonus" href="https://www.youtube.com/shorts/JxszYVTMtAQ" target="_blank">
+                    UM PRESENTE SECRETO
+                </a>
+            </p>
+        </div>
+
+        <div class="lado-coracao">
+            <img class="heart-img" src="https://i.imgur.com/CRNrkEn.gif">
+            <div id="tempo"></div>
+
+            <p id="msgExtra" class="extra">
+               
+                 “Esse é todo o tempo que você existe nesta Terra<br><br>
+               então continue lutando, brilhando e sendo essa pessoa<br>
+                incrível que transforma o mundo apenas por existir <br>
+
+           
+            </p>
+        </div>
+
+    </div>
+</div>
+
+
+</div>
+
+</div>
+</div>
+
+<script>
+
+/* JS ORIGINAL INTACTO — NÃO ALTERADO */
+
+const intro = document.getElementById("intro");
+const page = document.querySelector(".page");
+
+intro.addEventListener("click", () => {
+    intro.style.opacity = "0";
+    setTimeout(() => {
+        intro.style.display = "none";
+        page.style.opacity = "1";
+        page.style.transform = "scale(1)";
+    }, 800);
+});
+
+let etapa = 0;
+const target = document.getElementById("target");
+const area = document.getElementById("gameArea");
+
+function mover(){
+    const maxX = area.clientWidth - 40;
+    const maxY = area.clientHeight - 40;
+    target.style.left = Math.random()*maxX + "px";
+    target.style.top = Math.random()*maxY + "px";
+}
+mover();
+
+target.onclick = () => {
+    etapa++;
+    if(etapa < 5){
+        mover();
+    } else {
+        gameArea.style.display="none";
+        confirm1.style.display="block";
+    }
+};
+
+function fugir(btn){
+    btn.style.position = "relative";
+    btn.style.left = (Math.random()*200 - 100) + "px";
+    btn.style.top = (Math.random()*100 - 50) + "px";
+}
+
+no1.onmouseover = () => fugir(no1);
+no2.onmouseover = () => fugir(no2);
+
+no1.onclick = () => fugir(no1);
+no2.onclick = () => fugir(no2);
+
+function nextConfirm(){
+    confirm1.style.display="none";
+    confirm2.style.display="block";
+}
+
+function startStory(){
+    gameWrapper.style.display="none";
+    conteudo.style.display="block";
+}
+
+const historia = [
+`Hoje não é um dia qualquer… 🎂`,
+
+`Hoje o tempo sorri diferente, porque foi nesse dia que o mundo ganhou a sua luz`,
+
+`Oi… talvez isso não seja um livro,
+mas carrega capítulos inteiros de carinho…`,
+
+`Quando escrevemos pensando em alguém,
+acabamos revivendo cada instante.
+
+As conversas leves,
+as risadas inesperadas,
+os pequenos momentos que, sem perceber,
+se tornam eternos dentro da gente.
+
+Ainda não tivemos tempo suficiente
+para colecionar grandes tristezas,
+e espero que, mesmo quando elas existirem,
+a gente sempre encontre abrigo um no outro`,
+
+`Aos poucos…
+
+cada conversa,
+cada partida,
+cada risada compartilhada…
+
+foi ocupando um espaço bonito no meu coração`,
+
+`Conversar com você,
+jogar com você,
+ou simplesmente existir na sua presença…
+
+tem algo de especial.
+
+Sem perceber,
+eu fui me encantando pelo seu jeito de falar,
+pela forma sincera como você sente as coisas,
+pela sua risada,
+pela pessoa incrível que você é de verdade`,
+
+`Quando estamos juntos,
+até os dias comuns parecem mais leves.
+
+Você transforma o ambiente sem esforço,
+como quem espalha felicidade naturalmente,
+e comigo não foi diferente`,
+
+`Seu jeito faz as pessoas sorrirem sem perceber.
+
+Você carrega uma alegria rara,
+dessas que mudam o dia de alguém só pela presença`,
+
+`E talvez seja isso que torna você tão inesquecível…
+
+você tem esse brilho calmo,
+esse encanto leve,
+essa forma única de existir no mundo`,
+
+`Então hoje,
+no seu aniversário,
+eu só desejo que a vida devolva em dobro
+toda a luz que você entrega aos outros.
+
+Que nunca faltem motivos para sorrir,
+sonhos para alcançar
+e pessoas que façam seu coração se sentir em casa`
+
+
+];
+
+
+let index = 0;
+let digitando = false;
+
+function proximoTexto() {
+    if (digitando) return;
+
+    if (index < historia.length) {
+        escreverTexto(historia[index]);
+        index++;
+    } else {
+
+        const btn = document.getElementById("btnContinuar");
+
+        btn.innerText = "🦄feliz aniversairo";
+        btn.disabled = true;
+        btn.style.cursor = "default";
+        btn.style.opacity = "0.9";
+        btn.style.background = "linear-gradient(45deg, #ff85a2, #ff4d6d)";
+        btn.style.transform = "scale(1.1)";
+
+        mostrarFinal();
+    }
+}
+
+function escreverTexto(texto) {
+    digitando = true;
+    const el = document.getElementById("texto");
+
+    el.style.opacity = 0;
+
+    setTimeout(() => {
+        el.innerHTML = texto.replace(/\n/g, "<br>");
+        el.style.opacity = 1;
+        digitando = false;
+    }, 200);
+}
+
+function mostrarFinal() {
+    document.getElementById("texto").style.display = "none";
+
+    document.getElementById("subtitulo").innerHTML = "✨ Obrigado por existir ✨";
+
+    const final = document.getElementById("final");
+    final.style.display = "block";
+
+    setTimeout(() => final.style.opacity = "1", 50);
+
+    iniciarContador();
+    criarParticulas();
+
+    setTimeout(() => {
+        const extra = document.getElementById("msgExtra");
+        extra.style.display = "block";
+
+        setTimeout(() => {
+            extra.style.opacity = "1";
+        }, 50);
+
+    }, 1500);
+}
+
+const dataInicio = new Date("2004-05-20");
+
+function iniciarContador() {
+    setInterval(() => {
+        const diff = new Date() - dataInicio;
+
+        const dias = Math.floor(diff / (1000*60*60*24));
+        const horas = Math.floor((diff/(1000*60*60))%24);
+        const minutos = Math.floor((diff/(1000*60))%60);
+
+        document.getElementById("tempo").innerText =
+            dias + " dias - " + horas + "h " + minutos + "m";
+    }, 1000);
+}
+
+function criarParticulas() {
+    setInterval(() => {
+        const p = document.createElement("div");
+        p.className = "particle";
+        p.innerText = Math.random() > 0.5 ? "💖" : "✨";
+        p.style.left = Math.random() * 100 + "%";
+
+        document.getElementById("final").appendChild(p);
+
+        setTimeout(() => p.remove(), 4000);
+    }, 300);
+}
+
+function criarEstrelas() {
+    const c = document.getElementById("stars");
+
+    for (let i = 0; i < 80; i++) {
+        const s = document.createElement("div");
+        s.className = "star";
+
+        s.style.top = Math.random() * 100 + "%";
+        s.style.left = Math.random() * 100 + "%";
+
+        c.appendChild(s);
+    }
+}
+
+criarEstrelas();
+
+/* flores de maio */
+function criarFloresMaio() {
+
+    const container = document.getElementById("floresMaio");
+
+    const flores = ["🌸","💮","🌺","🌷","🌹"];
+
+    setInterval(() => {
+
+        const flor = document.createElement("div");
+
+        flor.className = "flor-maio";
+
+        flor.innerText = flores[
+            Math.floor(Math.random() * flores.length)
+        ];
+
+        flor.style.left = Math.random() * 100 + "%";
+
+        flor.style.animationDuration =
+            (5 + Math.random() * 6) + "s";
+
+        flor.style.fontSize =
+            (18 + Math.random() * 25) + "px";
+
+        flor.style.opacity =
+            0.5 + Math.random() * 0.5;
+
+        container.appendChild(flor);
+
+        setTimeout(() => {
+            flor.remove();
+        }, 12000);
+
+    }, 350);
+}
+
+criarFloresMaio();
+
+</script>
+
+</body>
+</html>
